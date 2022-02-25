@@ -37,10 +37,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        truck.deliver()
         println("$this")
-
-        println("${viewModel.repository}")
+        println("$retrofit")
+        truck.deliver()
+        println("viewModel is $viewModel, repository is ${viewModel.repository}")
 
         bindService(Intent(this, MyService::class.java), object : ServiceConnection {
             override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
@@ -51,5 +51,9 @@ class MainActivity : AppCompatActivity() {
 
             }
         }, Context.BIND_AUTO_CREATE)
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().replace(R.id.container, MyFragment.newInstance("1", "2")).commit()
+        }
     }
 }
