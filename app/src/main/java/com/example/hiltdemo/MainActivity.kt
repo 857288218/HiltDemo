@@ -4,6 +4,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         println("$this")
         println("$retrofit")
         truck.deliver()
-        println("viewModel is $viewModel, repository is ${viewModel.repository}")
+        println("viewModel is $viewModel, repository is ${viewModel.repository}, truck is ${viewModel.truck}")
 
         bindService(Intent(this, MyService::class.java), object : ServiceConnection {
             override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
@@ -55,5 +56,6 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(R.id.container, MyFragment.newInstance("1", "2")).commit()
         }
+
     }
 }

@@ -19,12 +19,12 @@ import javax.inject.Singleton
 // 第三方类的依赖注入
 // @Module 用来提供一些无法用 构造@Inject 的依赖，如第三方库，接口，build 模式的构造等。
 // 使用 @Module 注解的类，需要使用 @InstallIn 注解指定 module 的范围
-// 增加了 @Module 注解的类，其实代表的就是一个模块，并通过指定的组件来告诉在那个组件中可以使用绑定安装。
+// 增加了 @Module 注解的类，其实代表的就是一个模块，并通过指定的组件来告诉在哪些组件中可以使用绑定安装。
 
-// @InstallIn注解指定 module 的范围,在该组件范围内可以使用由这个module提供的所有依赖注入实例
+// @InstallIn注解指定 module 的范围,在该组件范围内(包括以该组件为父组件的组件)可以使用由这个module提供的所有依赖注入实例
 // 例如@InstallIn(ActivityComponent::class)，就是把这个模块安装到Activity组件当中。
 // 安装到Activity组件中，那么在Activity中是可以使用由这个module提供的所有依赖注入实例,Activity中包含的Fragment和View也可以使用，但是除Activity、Fragment、View之外的其他地方就无法使用了。
-// 比如说，我们在Service中使用@Inject来对Retrofit/OkHttpClient类型的字段进行依赖注入，就一定会报错。
+// 比如说，我们在Service/ViewModel中使用@Inject来对Retrofit/OkHttpClient类型的字段进行依赖注入，就一定会报错。
 // 这里使用的SingletonComponent为全局组件，依赖注入实例可以在全项目中使用
 @Module
 @InstallIn(SingletonComponent::class)

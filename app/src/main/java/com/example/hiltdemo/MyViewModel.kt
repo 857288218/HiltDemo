@@ -20,4 +20,7 @@ class MyViewModel @Inject constructor(app: Application) : AndroidViewModel(app) 
 
     @Inject
     lateinit var driver: Driver
+
+    @Inject
+    lateinit var truck: Truck
 }

@@ -3,6 +3,8 @@ package com.example.hiltdemo
 import android.content.Context
 import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
 // 使用 @Inject 来告诉 Hilt 如何提供该类的实例，常用于构造方法，非私有字段中。
