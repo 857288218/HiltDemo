@@ -9,7 +9,7 @@ import okhttp3.OkHttpClient
 import javax.inject.Inject
 
 @HiltViewModel
-class MyViewModel @Inject constructor(app: Application) : AndroidViewModel(app) {
+class MyViewModel @Inject constructor(app: Application, val repository12: Repository) : AndroidViewModel(app) {
 
     // 也可以放在构造函数中，不需要加@Inject注解
     @Inject

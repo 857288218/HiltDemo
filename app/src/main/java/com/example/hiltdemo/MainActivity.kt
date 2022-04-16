@@ -41,18 +41,18 @@ class MainActivity : AppCompatActivity() {
         println("$this")
         println("$retrofit")
         truck.deliver()
-        println("viewModel is $viewModel, repository is ${viewModel.repository}, truck is ${viewModel.truck}")
+        println("viewModel is $viewModel, repository is ${viewModel.repository12}, truck is ${viewModel.truck}")
 
-        bindService(Intent(this, MyService::class.java), object : ServiceConnection {
-            override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-
-            }
-
-            override fun onServiceDisconnected(name: ComponentName?) {
-
-            }
-        }, Context.BIND_AUTO_CREATE)
-
+//        bindService(Intent(this, MyService::class.java), object : ServiceConnection {
+//            override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+//                println("$name")
+//            }
+//
+//            override fun onServiceDisconnected(name: ComponentName?) {
+//                println("$name")
+//            }
+//        }, Context.BIND_AUTO_CREATE)
+        startService(Intent(this, MyService::class.java))
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(R.id.container, MyFragment.newInstance("1", "2")).commit()
         }

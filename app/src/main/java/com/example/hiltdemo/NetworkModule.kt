@@ -32,7 +32,7 @@ class NetworkModule {
 
     // @Provides常用于被 @Module 注解标记类的内部方法上。并提供依赖项对象。
     @Provides
-    // Module中方法上添加的作用域注解(@Singleton,@ActivityScoped等)需要和@InstallIn组件对应否则编译不过，
+    // Module中方法上添加的作用域注解(@Singleton,@ActivityScoped等)需要和@InstallIn组件对应否则编译不过，或不添加作用域注解 每次对OkHttpClient依赖注入都会创建新的实例
     // 例如@InstallIn(ActivityComponent::class)那么在方法上添加作用域注解只能添加@ActivityScoped
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
